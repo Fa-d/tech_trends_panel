@@ -1,7 +1,11 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Box, Drawer, List, ListItemButton, Typography } from '@mui/material';
+import { Box, Drawer, List, ListItemButton } from '@mui/material';
 
 import React from "react";
+import { BatchProcess } from './pages/batchProcess/BatchProcess';
+import { Home } from './pages/home/Home';
+import { SingleUrl } from './pages/singleUrl/SingleUrl';
+import { ShowAll } from './pages/showAll/ShowAll';
 
 const drawerWidth = 240;
 
@@ -13,15 +17,10 @@ export const App: React.FC = () => {
                 <Sidebar />
                 <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                     <Routes>
-                        <Route path="/" element={
-                            <Typography variant="h3">Show all</Typography>
-                        } />
-                        <Route path="/batch-processing" element={
-                            <Typography variant="h3">Batch Processing</Typography>
-                        } />
-                        <Route path="/single-url-processing" element={
-                            <Typography variant="h3">Single URL Processing</Typography>
-                        } />
+                        <Route path="/" element={<Home />} />
+                        <Route path="/show-all" element={<ShowAll />} />
+                        <Route path="/batch-processing" element={<BatchProcess />} />
+                        <Route path="/single-url-processing" element={<SingleUrl />} />
                     </Routes>
                 </Box>
             </Box>
@@ -44,7 +43,7 @@ const Sidebar = () => {
                 },
             }}>
             <List>
-                <ListItemButton component={Link} to="/" selected={location.pathname === '/'}>
+                <ListItemButton component={Link} to="/show-all" selected={location.pathname === '/show-all'}>
                     Show all
                 </ListItemButton>
 
