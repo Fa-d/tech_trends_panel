@@ -10,6 +10,7 @@ import {
     Typography,
     Checkbox
 } from '@mui/material';
+import { ArrowBack, ArrowRight, ArrowRightAlt } from '@mui/icons-material';
 
 
 
@@ -18,13 +19,14 @@ interface UrlListData {
     title: string;
     url: string;
     last_updated: string;
-    update: boolean
+    update: boolean,
+    categories: string
 }
 
 const data: UrlListData[] = [
-    { id: 1, title: 'Project Alpha', url: 'http://google.com', last_updated: '2023-07-15', update: false },
-    { id: 2, title: 'Marketing Site', url: 'http://yahoo.com', last_updated: '2023-07-14', update: true },
-    { id: 3, title: 'User Dashboard', url: 'http://duckduckgo.com', last_updated: '2023-07-13', update: false },
+    { id: 1, title: 'Project Alpha', url: 'http://google.com', last_updated: '2023-07-15', update: false, categories: "" },
+    { id: 2, title: 'Marketing Site', url: 'http://yahoo.com', last_updated: '2023-07-14', update: true, categories: "" },
+    { id: 3, title: 'User Dashboard', url: 'http://duckduckgo.com', last_updated: '2023-07-13', update: false, categories: "" },
 ];
 
 
@@ -46,11 +48,16 @@ export const ShowAll: React.FC = () => {
                             <Typography variant="h6">Last Updated</Typography>
                         </TableCell>
 
-                        <TableCell align="right">
+                        <TableCell align="center">
                             <Typography variant="h6">Update</Typography>
+                        </TableCell>
+
+                        <TableCell align="center">
+                            <Typography variant="h6">Categories</Typography>
                         </TableCell>
                     </TableRow>
                 </TableHead>
+                
                 <TableBody>
                     {data.map((row) => (
                         <TableRow key={row.id} >
@@ -69,10 +76,14 @@ export const ShowAll: React.FC = () => {
                                 </Typography>
                             </TableCell>
 
-                            <TableCell align="right">
-                                <Checkbox defaultChecked={row.update}/>  
-
+                            <TableCell align="center">
+                                <Checkbox defaultChecked={row.update} />
                             </TableCell>
+
+                            <TableCell align="center">
+                                <ArrowRightAlt />
+                            </TableCell>
+
                         </TableRow>
                     ))}
                 </TableBody>
