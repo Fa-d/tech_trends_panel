@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Box, Drawer, List, ListItemButton } from '@mui/material';
+import { Box, Divider, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import { Home as HomeIcon } from '@mui/icons-material';
 
 import React from "react";
 import { BatchProcess } from './pages/batchProcess/BatchProcess';
@@ -43,6 +44,19 @@ const Sidebar = () => {
                 },
             }}>
             <List>
+                <ListItemButton component={Link} to="/" selected={location.pathname === '/'}>
+
+                    <ListItemIcon>
+                        <HomeIcon color='primary' />
+                    </ListItemIcon>
+                    <ListItemText
+                        primary= {<Typography variant="body2" color="primary" fontWeight="medium">Home</Typography>}        
+                
+                    />
+
+                </ListItemButton>
+                <Divider />
+
                 <ListItemButton component={Link} to="/show-all" selected={location.pathname === '/show-all'}>
                     Show all
                 </ListItemButton>
